@@ -1,0 +1,529 @@
+/**
+ * WYSIPreview Editor
+ *
+ * @package WYSIPreview Editor
+ * @author Wada Minoru
+ **/
+
+/* WYSIPREVIEW EDITOR */
+#SMART_EDITOR_TOOL {
+  position: fixed;
+  top: 32px;
+  left: 0px;
+  width: 240px;
+  height: 30px;
+  z-index: 10000;
+  color: #EEE;
+  border: 1px solid #333;
+  box-sizing: content-box;
+  overflow: hidden;
+}
+#SMART_EDITOR_TOOL.write-mode-on {
+  overflow: visible;
+  width: 901px;
+  height: 50px;
+}
+#WYSIPRE_AREA1 {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 720px;
+  height: 30px;
+}
+#SMART_EDITOR_TOOL #SmartEditorHandTD {
+  width: 141px;
+}
+#SMART_EDITOR_TOOL #SMART_EDITOR_HAND_AREA {
+  height: 30px;
+  border: none;
+  margin: 0;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  color: #CCC;
+  vertical-align: middle;
+  padding: 0px 0px 0 16px;
+  font-weight: normal;
+  text-align: left;
+  font-size: 11px;
+  line-height: 28px;
+}
+.smarteditor-grabbing {
+  cursor: grabbing !important;
+  cursor: -moz-grabbing !important;
+  cursor: -webkit-grabbing !important;
+}
+#SMART_EDITOR_TOOL #SMART_EDITOR_HAND_AREA .hand {
+  border-left: 3px double #555;
+  border-right: 3px double #555;
+  width: 1px;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+table#SMART_EDITOR_BTNS {
+  margin: 0;
+  padding: 0;
+  border: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 901px;
+  height: 30px;
+  background: #464646;
+  background: linear-gradient(to top,#373737 0,#464646 5px);
+  box-sizing: content-box;
+}
+#SMART_EDITOR_BTNS td {
+  min-width: 30px;
+  padding: 0 1px;
+  border: none;
+  border-right: 1px solid #555;
+  text-align: center;
+  vertical-align: top;
+  box-sizing: content-box;
+}
+#SMART_EDITOR_BTNS a.active, #SMART_EDITOR_BTNS a:hover {
+  background-color: #1F1F1F;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #919191;
+  background-image: -webkit-gradient(linear,left bottom,left top,color-stop(0,#1F1F1F ),color-stop(18%,#1F1F1F ));
+  background-image: linear-gradient(to top,#1F1F1F  0,#1F1F1F  5px);
+}
+#SMART_EDITOR_BTNS td a {
+  display: block;
+  text-indent: -9999px;
+  outline: none;
+  width: 100%;
+  height: 25px;
+  border-right: 1px solid #333;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+#SMART_EDITOR_BTNS td .button {
+  padding: 0 2px;
+}
+#SMART_EDITOR_BTNS td .button:hover, #SMART_EDITOR_BTNS td .button.active {
+  background: none;
+  background-image: none;
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(5%, #ededed), color-stop(100%, #dfdfdf) );
+}
+
+#SMART_EDITOR_BTNS .button {
+  display: block;
+  color: #555454;
+  width: auto;
+  padding: 0 5px;
+  text-indent: 0;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 2px 3px;
+  height: auto;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  text-decoration: none;
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(5%, #ededed), color-stop(100%, #dfdfdf) );
+  background-color: #ededed;
+  -webkit-box-shadow: inset 1px 1px 0px 0px #ffffff;
+  box-shadow: inset 1px 1px 0px 0px #ffffff;
+}
+#SMART_EDITOR_BTNS a.button:hover {
+  background: -webkit-gradient( linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed) );
+  background: -moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+  background-color: #dfdfdf;
+}
+
+#SMART_EDITOR_BTNS a.smarteditor-tool-write {
+  background-image: url("../img/icon-pen.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-underline {
+  background-image: url("../img/icon-underline.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-italic {
+  background-image: url("../img/icon-em.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-bold {
+  background-image: url("../img/icon-bold.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-ul {
+  background-image: url("../img/icon-ul.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-ol {
+  background-image: url("../img/icon-ol.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-link {
+  background-image: url("../img/icon-link.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-nolink {
+  background-image: url("../img/icon-nolink.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-blockquote {
+  background-image: url("../img/icon-blockquote.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-media {
+  background-image: url("../img/icon-media.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-css {
+  background-image: url("../img/icon-cssbtn.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-source {
+  background-image: url("../img/icon-source.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-element {
+  background-image: url("../img/icon-element.png");
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-strong {
+  text-indent: 0;
+}
+#SMART_EDITOR_BTNS a.smarteditor-tool-em {
+  text-indent: 0;
+}
+#SMART_EDITOR_BTNS a.smarteditorBtn {
+  text-align: center;
+  font-size: 12px;
+  line-height: 2.1;
+}
+#SMART_EDITOR_BTNS a.smarteditorBtn:hover {
+  text-decoration: none;
+}
+#SMART_EDITOR_BTNS a.smarteditorBtn em {
+  color: #C0C0C0;
+  line-height: 1.8;
+  font-size: 12px;
+}
+#SMART_EDITOR_BTNS a.smarteditorBtn strong {
+  color: #C0C0C0;
+  line-height: 1.8;
+  font-size: 12px;
+}
+
+#SMART_EDITOR_TAG_PATH {
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  width: 100%;
+  height: 20px;
+  padding: 0;
+  background: #FFF;
+  color: #838383;
+  text-align: left;
+  line-height: 1.5;
+  font-size: 12px;
+}
+#SMART_EDITOR_TAG_PATH a {
+  cursor: pointer;
+}
+
+#SMART_EDITOR_BTNS .smarteditorMenu {
+  position: relative;
+  text-align: left;
+  width: 100px;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu p {
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+  height: 26px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  line-height: 1.9;
+  background-color: #EEE;
+  color: #333;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu p a {
+  text-indent: 0;
+  color: #333;
+  height: 22px;
+  padding: 0 0 0 15px;
+  margin: 1px;
+  border: 1px solid #333;
+  background: url("../img/icon-arrow.png") left top no-repeat;
+  display: block;
+  width: 81px;
+  font-size: 12px;
+  line-height: 2;
+  box-sizing: content-box;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu p a:hover {
+  text-decoration: none;
+  border: 1px solid #A5A5A5;
+}
+@-webkit-keyframes modalFadeIn {
+0% {opacity:0;display:block;}
+100% {opacity:1;}
+}
+
+#SMART_EDITOR_BTNS .smarteditorMenu ul {
+  position: absolute;
+  top: 1px;
+  left: -2px;
+  list-style: none;
+  width: 100%;
+  border: 1px solid #9E9E9E;
+  border-bottom: none;
+  display: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  -webkit-animation-name: modalFadeIn;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-iteration-count: 1;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu:hover ul {
+  opacity: 1;
+  display: block;
+}
+
+#SMART_EDITOR_BTNS .smarteditorMenu ul li {
+  width: auto;
+  margin: 0px;
+  float: none;
+  border-right: none;
+  border-bottom: 1px solid #9E9E9E;
+  background-color: #FEFEFE;
+  color: #333;
+  overflow: hidden;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu ul li a {
+  text-indent: 0;
+  border: none;
+  font-size: 12px;
+  line-height: 2;
+  padding: 0 0 0 15px;
+  background: url("../img/icon-arrow.png") left top no-repeat;
+  color: #333;
+  width: auto;
+  display: block;
+  text-align: left;
+  text-decoration: none;
+}
+#SMART_EDITOR_BTNS .smarteditorMenu ul li a.active, #SMART_EDITOR_BTNS .smarteditorMenu ul li a:hover {
+  color: #333;
+  background-color: #E7E7E7;
+  text-decoration: none;
+}
+
+/* smarteditorBtnMenu */
+
+#SMART_EDITOR_BTNS .smarteditorBtnMenu {
+  position: relative;
+  text-align: left;
+  width: 60px;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu p {
+  position: absolute;
+  display: block;
+  left: 0px;
+  top: 0px;
+  width: 60px;
+  height: 26px;
+  padding: 0;
+  margin: 2px 0 0 0;
+  line-height: 1.9;
+  color: #333;
+  text-indent: -9999px;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu p a {
+  text-indent: 0;
+  height: 22px;
+  display: block;
+  line-height: 2;
+  box-sizing: content-box;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu p a:hover {
+  text-decoration: none;
+  border: 1px solid #A5A5A5;
+}
+
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul {
+  position: absolute;
+  top: 1px;
+  left: -2px;
+  list-style: none;
+  width: 100%;
+  border-bottom: none;
+  display: none;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  -webkit-animation-name: modalFadeIn;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-iteration-count: 1;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu:hover ul {
+  opacity: 1;
+  display: block;
+}
+
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li {
+  width: auto;
+  margin: 0px;
+  float: none;
+  border-right: none;
+  background: #464646;
+  background: linear-gradient(to top,#373737 0,#464646 5px);
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a {
+  display: block;
+  text-indent: -9999px;
+  outline: none;
+  width: 100%;
+  height: 25px;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu.smarteditor-align-menu p a, #SMART_EDITOR_BTNS .smarteditorBtnMenu.smarteditor-link-menu p a {
+  text-indent: -9999px;
+  outline: none;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu.smarteditor-align-menu p a {
+  background-image: url("../img/icon-align-left.png");
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu.smarteditor-link-menu p a {
+  background-image: url("../img/icon-link.png");
+}
+
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a.justifyLeft {
+  background-image: url("../img/icon-align-left.png");
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a.justifyCenter {
+  background-image: url("../img/icon-align-center.png");
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a.justifyRight {
+  background-image: url("../img/icon-align-right.png");
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a.active, #SMART_EDITOR_BTNS .smarteditorBtnMenu ul li a:hover {
+  color: #333;
+  background-color: #A8A8A8;
+  text-decoration: none;
+}
+#SMART_EDITOR_BTNS .smarteditorBtnMenu.smarteditor-link-menu ul li a.active {
+  color: #333;
+  background-color: transparent;
+  text-decoration: none;
+}
+/*
+ * SmartEditor-Window
+ */
+#SmartEditor-Window {
+  position: fixed;
+  left: 0px;
+  top: 200px;
+  width: 100px;
+  height: 100px;
+  background: #464646;
+  color: #eee;
+  z-index: 9999;
+  -webkit-animation-name: modalFadeIn;
+  -webkit-animation-duration: .5s;
+  -webkit-animation-iteration-count: 1;
+}
+#SmartEditor-Window-Title {
+  margin: 1px;
+  height: 21px;
+  padding: 3px 6px;
+  background: #EEE;
+  color: #333;
+  line-height: 21px;
+  font-size: 12px;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+#SmartEditor-Window-CloseBtn {
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  right: 6px;
+  top: 5px;
+  font-size: 12px;
+  line-height: 17px;
+  text-align: center;
+  border: 1px solid #333;
+  background: #333;
+  color: #eee;
+  border-radius: 3px;
+  cursor: pointer;
+}
+#SmartEditor-Window-Content {
+  padding: 10px 10px 40px;
+}
+#SmartEditor-Window-Content input {
+  margin-bottom: 6px;
+}
+#SmartEditor-Window-OKBtn {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  width: 60px;
+}
+.smarteditor-window-btn {
+  text-align: center;
+  border-radius: 3px;
+  background: linear-gradient(to bottom,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);
+  color: #333;
+  cursor: pointer;
+}
+.smarteditor-window-btn:hover {
+  background: linear-gradient(to top,  #e2e2e2 0%,#dbdbdb 50%,#d1d1d1 51%,#fefefe 100%);
+}
+.pos-relative {
+  position: relative;
+}
+/*
+ * CSS EDITOR
+ */
+
+#SmartEditor-Window-CSSEditor {
+  width: 100%;
+  height: 30em;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/*
+ * Source Editor
+ */
+#SmartEditor[contenteditable=true] #more-118 {
+  display: block;
+  border-bottom: 1px solid #CCC;
+}
+
+#SmartEditor-Window-SourceEditor {
+  width: 100%;
+  height: 300px;
+  word-break: break-all;
+}
+
+#SmartEditor-Window-Element-NodeName {
+  padding: 5px 6px;
+  background-color: #333;
+  border: 1px solid #222;
+  margin: 4px 0;
+}
+#SmartEditor-Window-Element-NodeName a {
+  color: #EEE;
+  text-decoration: none;
+}
+#SmartEditor-Window-Element-NodeName a.active {
+
+  background-color: #FFF;
+  padding: 0 4px;
+  color: #CF0B0B;
+}
+
+#SmartEditor-Window-Element-StyleVal {
+  width: 375px;
+}
+#SmartEditor-Window-AddClass {
+  margin-left: 10px;
+}
